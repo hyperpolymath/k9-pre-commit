@@ -1,0 +1,77 @@
+= k9-pre-commit
+:toc: preamble
+:icons: font
+
+== Overview
+
+**Pre-commit hook for validating K9 configuration files.**
+
+K9 is a Nickel-based configuration contract format used for deployment
+validation and policy enforcement. This hook validates `.k9` and `.k9.ncl`
+files on commit.
+
+== Checks Performed
+
+1. **K9! magic number** — First non-empty line must be exactly `K9!`
+2. **SPDX header** — `SPDX-License-Identifier` in the first 10 lines
+3. **Pedigree block** — `pedigree = { ... }` with `name` and `version` fields
+4. **Security level** — `leash`/`security_level` must be `kennel`, `yard`, or `hunt`
+5. **Hunt-level signature** — Hunt files must include `signature` or `signature_required`
+
+== Installation
+
+Add to your `.pre-commit-config.yaml`:
+
+[source,yaml]
+----
+repos:
+  - repo: https://github.com/hyperpolymath/k9-pre-commit
+    rev: v1.0.0
+    hooks:
+      - id: validate-k9
+----
+
+Then install:
+
+[source,bash]
+----
+pre-commit install
+----
+
+== Manual Usage
+
+You can also run the hook script directly:
+
+[source,bash]
+----
+./hooks/validate-k9.sh path/to/file.k9.ncl [more-files.k9 ...]
+----
+
+== Security Levels
+
+[cols="1,1,3"]
+|===
+| Level | Trust | Requirements
+
+| `kennel`
+| Data-only
+| No signature required
+
+| `yard`
+| Validated
+| Nickel contracts enforced
+
+| `hunt`
+| Full access
+| Signature required
+|===
+
+== Author
+
+Jonathan D.A. Jewell <j.d.a.jewell@open.ac.uk>
+
+== License
+
+SPDX-License-Identifier: PMPL-1.0-or-later
+
+See link:LICENSE[LICENSE] for details.

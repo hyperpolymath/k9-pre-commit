@@ -1,0 +1,16 @@
+# SPDX-License-Identifier: PMPL-1.0-or-later
+# Copyright (c) 2026 Jonathan D.A. Jewell (hyperpolymath) <j.d.a.jewell@open.ac.uk>
+#
+# .pre-commit-hooks.yaml — Hook definitions for the pre-commit framework
+# See: https://pre-commit.com/#creating-new-hooks
+
+- id: validate-k9
+  name: Validate K9 configurations
+  description: >-
+    Validate K9 configuration files for K9! magic number, pedigree block
+    (name, version, security_level), valid security levels (kennel/yard/hunt),
+    and hunt-level signature requirements.
+  entry: hooks/validate-k9.sh
+  language: script
+  files: '\.k9(\.ncl)?$'
+  types: [file]
