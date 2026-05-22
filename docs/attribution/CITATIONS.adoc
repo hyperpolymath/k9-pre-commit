@@ -10,7 +10,7 @@
   title = {k9-pre-commit},
   year = {2026},
   url = {https://github.com/hyperpolymath/k9-pre-commit},
-  license = {PMPL-1.0-or-later}
+  license = {MPL-2.0}
 }
 ----
 
