@@ -3,7 +3,7 @@
 #
 # STATE.a2ml — Project state checkpoint (META-TEMPLATE)
 #
-# This is the STATE file for rsr-template-repo itself.
+# This is the STATE file for k9-pre-commit.
 # When consumed by a new project, replace {{PLACEHOLDER}} tokens
 # and customize sections below for the target project.
 
